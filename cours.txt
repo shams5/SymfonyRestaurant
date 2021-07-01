@@ -1,0 +1,24 @@
+Basics steps to starting a new project in symfony
+1: After installing symfony check the availibality of symfony in the machine by runig symfony -v
+2: for runnig a symfony project we must have installed composer from https://getcomposer.org/download/ 
+and check the availibality of composer by runing composer -v
+3: go to the power shell to create a new project go to htdocs in xampp or www dossier in wampp
+4: run the commond: symfony new newProject --full
+go to the newProject by : cd newProject
+5: for seeing the newProject in the navigator run : symfony server:start -d and go in the navigator and write localhost:8000
+6: by opening the newProject in the visual stidio and go to the .env file and change some like below:
+DATABASE_URL="mysql://root:@127.0.0.1:3306/newProject"
+7: in the pwer shell run: php bin/console doctrine:database:create, for creating a new database in the base de données.
+
+
+creating a new controller:
+_________________________________
+php bin/console make:controller
+
+================================================================================================
+important tags in twig language
+_______________________________
+{% block title %}Symfony Restuarant{% endblock %}.
+{% block stylesheet %}{% endblock %} => block of css code to have a good and clear structure.
+{% include 'layout/aside.html.twig' %} => include a file to main file.
+{% extends 'base.html.twig' %} => extends the structure of the main to the index file.
