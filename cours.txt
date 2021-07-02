@@ -32,6 +32,12 @@ ____________________________________________
 
 for inserting new infos in the base the table on database, we install a new bibiotique "orm- fixtures"
 run the command in power shell: composer require --dev orm-fixtures
+
+creating an instance and loading it on the table on database
+______________________________________________________________
+- in the file PlatFixtures change the class name 
+- create a new instance
+run the commond: php bin/console doctrine:fixtures:load
 ================================================================================================
 important tags in twig language
 _______________________________
