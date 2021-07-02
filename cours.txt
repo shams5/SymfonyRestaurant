@@ -20,6 +20,12 @@ _______________________________
 php bin/console make:entity
 - choose the name for entity/table
 - register all properties
+
+enregistration of the entity in the database
+____________________________________________
+- php bin/console make:migration
+ -php bin/console doctrine:migrations:migrate 
+- answer : yes
 ================================================================================================
 important tags in twig language
 _______________________________
