@@ -19,7 +19,10 @@ creating a new entity:
 _______________________________
 php bin/console make:entity
 - choose the name for entity/table
-- register all properties
+- type all properties
+then
+-create new file in the folder DataFixtures manually
+- copy all codes from file AppFixtures and past them in the newlly created file
 
 enregistration of the entity in the database
 ____________________________________________
