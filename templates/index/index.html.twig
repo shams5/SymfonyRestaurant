@@ -21,20 +21,31 @@
     </div>
 
     <!-- Product grid -->
+    {#
+        Logique de la boucle:
+        entity_count permet de connaitre le nombre de publications d'Entity
+        Notre container de container doit contenir deux Entity
+        Evant notre boucle, nous ouvrons notre container de notre container et plaçons entity_count à zéro
+        A chaue publication d'Entity, entity_count est incrémenté de 1
+        En début de boucle, lorsque entity_count est égal à 2, il est réinitialisé à zéro et le container de container est fermé et réouvert
+        à la fin de notre boucle, nous ajetons un </div> de fermeture pour fermer le dernier container qui n'a pas été fermé par la boucle for (étant donné que le <div> de fermeture est placé dans la condition initiole)
+    #}
     <div class="w3-row w3-grayscale">
-    {% for i in 0..3 %}
+    {% set entity_count = 0 %}
         <div class="w3-col l3 s6">
+        {% for plat in plats %}
+            {% if entity_count >= 2 %}
+                {% set entity_count = 0 %}
+                </div>
+                <div class="w3-col l3 s6">
+            {% endif %}
             <div class="w3-container">
                 <img src="{{asset('assets/img/plat_2.jpg')}}" style="width:100%">
-                <p>Ripped Skinny Jeans<br><b>$24.99</b></p>
+                <p>{{ plat.name}}<br><b>{{ plat.price}} £</b></p>
             </div>
-            <div class="w3-container">
-                <img src="{{asset('assets/img/plat_2.jpg')}}" style="width:100%">
-                <p>Mega Ripped Jeans<br><b>$19.99</b></p>
-            </div>
-        </div>
+            {% set entity_count = entity_count + 1 %}
     {% endfor %}
-    
+    </div>
     </div>
 
     <!-- Subscribe section -->
