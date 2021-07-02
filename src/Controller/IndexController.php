@@ -34,31 +34,29 @@ class IndexController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/produit/{produitId}", name="produit_display")
+     /**
+     * @Route("/produit/{platId}", name="produit_display")
      */
     public function produitDisplay(Request $request, $platId = false){
-        // cette fonction presente le produit (c'est à dire le plat) indetifie par son ID dans l'URL
-        // Pour dialoguer avec la base de données et récupérer les informations sur le plat, nous allons récupérerl'Entity Manager et le Repository concerné
+        //Cette fonction présente le produit (c'est-à-dire le plat) identifié par son ID dans l'URL
+        //Pour dialoguer avec la base de données et récupérer les informations sur le plat, nous allons récupérer l'Entity Manager et le Repository concerné
         $entityManager = $this->getDoctrine()->getManager();
         $platRepository = $entityManager->getRepository(\App\Entity\Plat::class);
-        // Nous récupérons la liste des Category
+        //Nous récupérons la liste des Catégories
         $categoryRepository = $entityManager->getRepository(\App\Entity\Category::class);
         $categories = $categoryRepository->findAll();
-        // Nous récupérons le  Plat dont l'id est indiqué dans l'URL
-        // Nous faisons appel à la fonction find() laquelle récupère l'instance d'Entity dont l'ID correspond à celui de la table SQL auquel notre Repository est lié
+        //Nous récupérons le Plat dont l'ID est indiqué dans l'URL
+        //Nous faisons appel à la fonction find() laquelle récupère l'instance d'Entity dont l'ID correspond à celui de la table SQL auquel notre Repository est lié
         $plat = $platRepository->find($platId);
-        // si aucun plat n'est trouvé, nous retournons vers l'index
-        if($platId){
+        //Si aucun plat n'est trouvé, nous retournons vers l'index
+        if(!$plat){
             return $this->redirect($this->generateUrl('index'));
         }
-
-        // si nous avons trouvé un plat, nous le renvoyons vers la page Twig chargée d'afficher un résultat individuel
-        return $this->render('index/fiche-produite.html.twig', [
-            'cotegories' => $categories,
+        //Si nous avons trouvé un plat, nous le renvoyons vers la page Twig chargée d'afficher un résultat individuel
+        return $this->render('index/fiche-produit.html.twig', [
+            'categories' => $categories,
             'plat' => $plat,
         ]);
-        
-
     }
+
 }

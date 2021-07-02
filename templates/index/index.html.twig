@@ -40,7 +40,9 @@
                 <div class="w3-col l3 s6">
             {% endif %}
             <div class="w3-container">
+                <a href="{{ path('produit_display', {'platId' : plat.id}) }}">
                 <img src="{{asset('assets/img/plat_2.jpg')}}" style="width:100%">
+                </a>
                 <p>{{ plat.name}}<br><b>{{ plat.price}} £</b></p>
             </div>
             {% set entity_count = entity_count + 1 %}
