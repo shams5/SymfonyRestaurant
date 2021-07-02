@@ -26,6 +26,9 @@ ____________________________________________
 - php bin/console make:migration
  -php bin/console doctrine:migrations:migrate 
 - answer : yes
+
+for inserting new infos in the base the table on database, we install a new bibiotique "orm- fixtures"
+run the command in power shell: composer require --dev orm-fixtures
 ================================================================================================
 important tags in twig language
 _______________________________
