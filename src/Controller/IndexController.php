@@ -59,4 +59,29 @@ class IndexController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/gestion/plat/create", name="plat_create")
+     */
+    public function createPlat(Request $request){
+        $entityManager = $this->getDoctrine()->getManager();
+        $plat = new \App\Entity\Plat;
+        $platForm = $this->createForm(\App\PlatType::class, $plat);
+        // 
+        $platForm->handleRequest($request);
+        // 
+        if($request->isMethod('post') && $platForm->isValid()){
+            // 
+            $entityManager->persist($plat);
+            // 
+            $entityManager->flush();
+            // 
+            return $this->redirect($this->generateUrl('index'));
+        }
+        // 
+        return $this->render('index/dataform.html.twig', [
+            'categories' => $categories,
+            'formName' => 'Création de Plat',
+            'dataForm' => $platForm->createView(),
+        ]);
+    }
 }
